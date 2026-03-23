@@ -1,0 +1,2 @@
+epd1:epd2:localization:path_planner:robot_controller:robotics_challenge
+-DCATKIN_DEVEL_PREFIX=/home/rva_container/rva_exchange/rva_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rva_container/rva_exchange/rva_ws/install -G Unix Makefiles

@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/kenny/foxy_ws/install/people_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/obstacle_distance_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/husky_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/hunav_evaluator/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/hunav_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/change_controller_params/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/kenny/foxy_ws/install/people_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/obstacle_distance_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/husky_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/hunav_evaluator/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/hunav_msgs/lib/python3.8/site-packages",
+        "/home/kenny/foxy_ws/install/change_controller_params/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ]
+}

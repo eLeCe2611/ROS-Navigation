@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kenny/foxy_ws/install/social_force_window_planner/include/**",
+        "/home/kenny/foxy_ws/install/nav2_social_mpc_controller/include/**",
+        "/home/kenny/foxy_ws/install/people_msgs/include/**",
+        "/home/kenny/foxy_ws/install/obstacle_distance_msgs/include/**",
+        "/home/kenny/foxy_ws/install/husky_base/include/**",
+        "/home/kenny/foxy_ws/install/husky_msgs/include/**",
+        "/home/kenny/foxy_ws/install/hunav_rviz2_panel/include/**",
+        "/home/kenny/foxy_ws/install/hunav_gazebo_wrapper/include/**",
+        "/home/kenny/foxy_ws/install/hunav_msgs/include/**",
+        "/opt/ros/foxy/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

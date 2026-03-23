@@ -1,0 +1,28 @@
+
+<launch>
+
+    <!-- set environment variable -->
+    <env name="TURTLEBOT3_MODEL" value="burger" />
+    
+    <!-- launch Gazebo simulation -->
+    <include file="$(find robot_controller)/launch/turtlebot3_sim.launch">
+        <arg name="world_name" value="turtlebot3_stage_4" />
+        <arg name="x_pos" value="0.0"/>
+        <arg name="y_pos" value="0.0"/>
+        <arg name="z_pos" value="0.0"/>
+    </include>
+    
+	<!-- launch slam_gmapping node -->
+	<node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen" >
+	    <!--<remap from="scan" to="scan"/>-->
+	    <param name="base_frame" type="string" value="base_footprint" />
+	</node>
+	
+	
+	<!-- launch the teleoperation to build the map -->
+	<include file="$(find turtlebot3_teleop)/launch/turtlebot3_teleop_key.launch" />
+	
+	
+</launch>
+
+

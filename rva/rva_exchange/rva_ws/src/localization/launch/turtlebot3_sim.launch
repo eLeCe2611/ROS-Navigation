@@ -1,0 +1,41 @@
+
+<launch>
+
+    <!-- set environment variable -->
+    <env name="TURTLEBOT3_MODEL" value="burger" />
+    
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find turtlebot3_gazebo)/models/autorace/ground_picture" />
+
+    <arg name="world_name" default="turtlebot3_stage_2" /> <!--turtlebot3_autorace_2020-->
+    <arg name="x_pos" default="0.0"/> <!--0.8-->
+    <arg name="y_pos" default="0.0"/> <!-- -1.7747 -->
+    <arg name="z_pos" default="0"/>   
+    
+    <arg name="rviz_conf" default="$(find robot_controller)/config/epd3.rviz" />
+    
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/$(arg world_name).world" />
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>  
+    
+    <!-- connect camera position to the TF tree of the robot -->
+	<node pkg="tf2_ros" type="static_transform_publisher" name="camera_dummy_tf" args="0.04 0 0.11 0 0 0  base_link camera_dummy_link" />
+	<node pkg="tf2_ros" type="static_transform_publisher" name="camera_tf" args="0.04 0 0.11 0 0 0  camera_dummy_link camera_link" />
+	<node pkg="tf2_ros" type="static_transform_publisher" name="camera__optical_tf" args="0.04 0 0.11 -1.57 0 -1.5707  camera_link camera_optical_frame" />
+	
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger_for_autorace_2020.urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model autorace -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+    
+    <!-- launch RViz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_conf)"/>
+   
+
+</launch>
+
+

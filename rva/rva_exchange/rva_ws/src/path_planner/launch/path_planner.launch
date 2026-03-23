@@ -1,0 +1,47 @@
+
+<launch>
+
+    <!-- set environment variable -->
+    <env name="TURTLEBOT3_MODEL" value="burger" />
+    
+    <!-- robot init position -->
+    <arg name="x_pos" default="-1.6"/>
+    <arg name="y_pos" default="2.0"/>
+    <arg name="z_pos" default="0.0"/>
+    <arg name="h_pos" default="0.0"/>
+    
+    <arg name="map_file" default="$(find localization)/maps/map.yaml"/>
+    
+    <!-- launch Gazebo simulation -->
+    <include file="$(find localization)/launch/turtlebot3_sim.launch">
+        <arg name="world_name" value="turtlebot3_stage_4" />
+        <arg name="x_pos" value="$(arg x_pos)"/>
+        <arg name="y_pos" value="$(arg y_pos)"/>
+        <arg name="z_pos" value="$(arg z_pos)"/>
+        <arg name="rviz_conf" value="$(find path_planner)/config/planning.rviz"/>
+    </include>
+    
+    <!--global costmap 2d for path planning-->
+    <node pkg="costmap_2d" type="costmap_2d_node" name="costmap_2d" output="screen">
+        <rosparam command="load" file="$(find path_planner)/config/global_costmap_params.yaml" />
+    </node>
+    
+    <!-- launch localization -->
+    <include file="$(find path_planner)/launch/localization.launch">
+        <arg name="x_pos" value="$(arg x_pos)"/>
+        <arg name="y_pos" value="$(arg y_pos)"/>
+        <arg name="h_pos" value="$(arg h_pos)"/>
+        <arg name="map_file" value="$(arg map_file)"/>
+    </include>
+    
+	<!-- launch the path_planner node -->
+	<node pkg="path_planner" type="path_planner.py" name="path_planner" output="screen" >
+        <param name="base_frame_id" value="base_footprint" />
+        <param name="global_frame_id" value="map" />
+        <param name="update_map" value="false" />
+        <remap from="goal" to="move_base_simple/goal" />
+	</node>
+	
+</launch>
+
+

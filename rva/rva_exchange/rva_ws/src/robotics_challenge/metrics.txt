@@ -1,0 +1,8 @@
+Goals reached: 0
+Elapsed time: 0.000000
+Traveled Distance: 10.662342
+Min distance to obstacles: 0.183234
+Avg distance to obstacles: 0.000000
+Collision penalties: 0
+Linear vel penalties: 0
+Angular vel penalties: 696

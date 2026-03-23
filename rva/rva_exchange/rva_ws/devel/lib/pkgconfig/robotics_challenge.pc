@@ -1,0 +1,8 @@
+prefix=/home/rva_container/rva_exchange/rva_ws/devel
+
+Name: robotics_challenge
+Description: Description of robotics_challenge
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

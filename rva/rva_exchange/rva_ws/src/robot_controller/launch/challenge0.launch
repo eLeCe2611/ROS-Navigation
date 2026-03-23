@@ -1,0 +1,30 @@
+
+<launch>
+
+    <!-- set environment variable -->
+    <env name="TURTLEBOT3_MODEL" value="burger" />
+    
+    <!-- launch Gazebo simulation -->
+    <include file="$(find robot_controller)/launch/turtlebot3_sim.launch">
+        <arg name="world_name" value="turtlebot3_world" />
+        <arg name="x_pos" value="-2.0"/>
+        <arg name="y_pos" value="0.0"/>
+        <arg name="z_pos" value="0.0"/>
+    </include>
+    
+    <!-- launch the path publisher -->
+	<include file="$(find robot_controller)/launch/path_publisher.launch">
+	    <arg name="path_file" value="challenge0_path"/>
+	</include>
+    
+	<!-- launch the robot_controller node -->
+	<node pkg="robot_controller" type="robot_controller.py" name="robot_controller" output="screen" >
+	    <param name="robot_vel_topic" type="string" value="cmd_vel" />
+	    <param name="robot_scan_topic" type="string" value="scan" />
+		<param name="max_lin_vel" type="double" value="0.3" />
+		<param name="max_ang_vel" type="double" value="1.2" />
+	</node>
+	
+</launch>
+
+

@@ -1,0 +1,27 @@
+<launch>
+
+    <!-- set environment variable -->
+    <env name="TURTLEBOT3_MODEL" value="burger" />
+    
+    <!-- launch Gazebo simulation -->
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_stage_2.launch"/>
+    
+    <!-- connect laser position to the TF tree of the robot -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="scan_tf" args="0.02 0 0.15 0 0 0  base_footprint base_scan" />
+    
+    <!-- launch the controlCollisionCheck node -->
+    <node pkg="epd2" type="controlCollisionCheck.py" name="controlCollisionCheck" output="screen">
+        <param name="robot_vel_topic" type="string" value="cmd_vel" />
+        <param name="robot_scan_topic" type="string" value="scan" />
+
+        <!-- Parámetros para las velocidades máximas -->
+        <param name="max_linear_velocity" type="double" value="0.2" />
+	<param name="max_angular_velocity" type="double" value="0.5" />
+        <param name="angle_threshold" type="double" value="0.1" />
+    </node>
+    
+    <!-- launch RViz -->
+    <node pkg="rviz" type="rviz" name="rviz"/>
+    
+</launch>
+

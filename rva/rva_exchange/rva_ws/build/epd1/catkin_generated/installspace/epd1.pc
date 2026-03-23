@@ -1,0 +1,8 @@
+prefix=/home/rva_container/rva_exchange/rva_ws/install
+
+Name: epd1
+Description: Description of epd1
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

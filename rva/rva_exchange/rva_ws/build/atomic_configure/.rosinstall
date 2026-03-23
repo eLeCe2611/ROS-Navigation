@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/rva_container/rva_exchange/rva_ws/devel/setup.sh
